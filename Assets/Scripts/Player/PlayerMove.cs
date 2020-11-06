@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
+[RequireComponent(typeof(AudioSource))]
 public class PlayerMove : MonoBehaviour
 {
     [SerializeField] private string horizontalInputName;
@@ -16,14 +18,18 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private AnimationCurve jumpFallOff;
     [SerializeField] private float jumpMultiplier;
     [SerializeField] private KeyCode jumpKey;
-    
+    [SerializeField] private AudioClip[] m_FootstepSounds = null;
+
+    private float footstepTime;
     private bool isJumping;
+    private AudioSource m_AudioSource;
 
 
     //MOVEMENT PART -------------------------------------------------
     private void Awake()
     {
         charController = GetComponent<CharacterController>();
+        m_AudioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -46,7 +52,37 @@ public class PlayerMove : MonoBehaviour
         if ((vertInput != 0 || horizInput != 0) && OnSlope())
             charController.Move(Vector3.down * charController.height / 2 * slopeForce * Time.deltaTime);
 
+        if(forwardMovement.magnitude>0.0f)
+        {
+            footstepTime += Time.deltaTime;
+            if (footstepTime > 0.45f)
+            {
+                PlayFootStepAudio();
+
+                footstepTime = 0.0f;
+            }
+        }
+        
         JumpInput();
+    }
+
+    private void PlayFootStepAudio()
+    {
+        //Debug.Log("footstep");
+       if (!charController.isGrounded)
+        {
+            return;
+        }
+        // pick & play a random footstep sound from the array,
+        // excluding sound at index 0
+        int n = Random.Range(1, m_FootstepSounds.Length);
+        m_AudioSource.clip = m_FootstepSounds[n];
+        m_AudioSource.PlayOneShot(m_AudioSource.clip);
+        // move picked sound to index 0 so it's not picked next time
+        m_FootstepSounds[n] = m_FootstepSounds[0];
+        m_FootstepSounds[0] = m_AudioSource.clip;
+
+        
     }
 
     private bool OnSlope()

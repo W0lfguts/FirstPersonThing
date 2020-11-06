@@ -68,11 +68,11 @@ public class ItemPickupScript : MonoBehaviour
             Debug.DrawRay(cam.position, cam.forward * rayLength, Color.red);
 
         //HIGHLIGHTOBJ
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out theObject))
-        {
-            selectedObject = theObject.transform.gameObject.name;
-            internalObject = theObject.transform.gameObject.name;
-        }
+       // if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out theObject))
+       // {
+          //  selectedObject = theObject.transform.gameObject.name;
+          //  internalObject = theObject.transform.gameObject.name;
+       // }
 
 
 
@@ -137,6 +137,8 @@ public class ItemPickupScript : MonoBehaviour
             new Vector3(inspectTransform.localPosition.x, inspectTransform.localPosition.y, inspectDistance.y), 
             new Vector3(inspectTransform.localPosition.x, inspectTransform.localPosition.y, inspectDistance.x), 
             zoomLerp);
+        
+        //smooth zoom
 
         zoomLerp = Mathf.Clamp(zoomLerp, 0, 1);
         if(Input.GetAxis("Mouse ScrollWheel") > 0)
