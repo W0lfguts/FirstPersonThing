@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class ItemPickupScript : MonoBehaviour
 {
+    public AudioClip pickupSound;
+    public AudioClip putdownSound;
+    
+    AudioSource audio;
+
     [Header("Variables")]
     public bool itemPickedup = false;
     bool canInteract = true;
@@ -35,6 +40,8 @@ public class ItemPickupScript : MonoBehaviour
     private void Start()
     {
         inv = GameObject.Find("NewInventory");
+
+        audio = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -57,6 +64,7 @@ public class ItemPickupScript : MonoBehaviour
                     currItem = hit.collider.gameObject;
                     itemOriginPos = currItem.transform.position;
                     itemOriginRot = currItem.transform.rotation;
+                    audio.PlayOneShot(pickupSound, 1.0f);
                     //LockPlayer();
                 }
             }
@@ -91,6 +99,9 @@ public class ItemPickupScript : MonoBehaviour
                 Destroy(currItem.gameObject);
                 currItem = null;
                 ResetItemInfo();
+                
+
+
 
                 print("Added item to inventory");
             }
@@ -103,6 +114,7 @@ public class ItemPickupScript : MonoBehaviour
 
                 //reset item info
                 Invoke("ResetItemInfo", 1.0f);
+                audio.PlayOneShot(putdownSound, 1.0f);
             }
 
             //UnlockPlayer();
@@ -113,6 +125,7 @@ public class ItemPickupScript : MonoBehaviour
             //print("moving item back");
             currItem.transform.position = Vector3.Lerp(currItem.transform.position, itemOriginPos, smoothLerp * Time.deltaTime);
             currItem.transform.rotation = Quaternion.Lerp(currItem.transform.rotation, itemOriginRot, smoothLerp * Time.deltaTime);
+            
         }
 
         //  Move item to inspect position
@@ -126,6 +139,7 @@ public class ItemPickupScript : MonoBehaviour
                 float x = Input.GetAxis("Mouse Y") * Time.deltaTime * rotateSensitivity;
                 float y = Input.GetAxis("Mouse X") * Time.deltaTime * rotateSensitivity;
                 currItem.transform.eulerAngles += new Vector3(x, -y, 0);
+                
             }
         }
 
