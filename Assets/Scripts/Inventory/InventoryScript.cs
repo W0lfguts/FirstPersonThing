@@ -24,13 +24,13 @@ public class InventoryScript : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
-        ShowBoard1();
+//      ShowBoard1();
     }
 
 
     void Update()
     {
-        transform.GetChild(0).gameObject.SetActive(showInv);
+//      transform.GetChild(0).gameObject.SetActive(showInv);
 
         if(Input.GetKeyDown(invToggle) && canCheckInv)
         {
