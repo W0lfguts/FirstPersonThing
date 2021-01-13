@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTexture:
-        m_Texture: {fileID: 2800000, guid: a8ad4921417f3e644a8c531c66b95817, type: 3}
+        m_Texture: {fileID: 2800000, guid: 03341a9aacf05ec438fb56cb6bb7b6e0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
@@ -35,7 +35,7 @@ Material:
     - _SelfIllumination: 0.41
     - __dirty: 0
     m_Colors:
-    - _BackColour: {r: 0.6901961, g: 0.21316607, b: 0, a: 0}
+    - _BackColour: {r: 0.9433962, g: 0.84170437, b: 0.743147, a: 0}
     - _BaseColour: {r: 1, g: 1, b: 1, a: 0}
     - _BaseTint: {r: 0.45307946, g: 0.8490566, b: 0.17221431, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}

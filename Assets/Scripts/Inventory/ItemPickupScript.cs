@@ -31,6 +31,10 @@ public class ItemPickupScript : MonoBehaviour
 
     GameObject inv;
 
+    public Collections collections;
+    public GameObject collectedText;
+    
+
     //HIGHLIGHTOBJ
 
     public static string selectedObject;
@@ -47,7 +51,7 @@ public class ItemPickupScript : MonoBehaviour
     void Update()
     {
 
-        //  Check if player can reach the item
+        //  Check if player can reach the item //
         RaycastHit hit;
         if(Physics.Raycast(cam.position, cam.forward, out hit, rayLength))
         {
@@ -57,10 +61,14 @@ public class ItemPickupScript : MonoBehaviour
                 //  Pick up item
                 if(Input.GetKeyDown(interactKey) && !itemPickedup && canInteract)
                 {
+                    StoryItems storyItems = hit.collider.GetComponent<StoryItems>();
                     CancelInvoke();
                     canInteract = false;
                     Invoke("ResetInteract", 0.2f);
                     itemPickedup = true;
+                    collections.Collect(storyItems.category, storyItems.index);
+                    collectedText.SetActive(true);
+                    StartCoroutine("WaitForSec");
                     currItem = hit.collider.gameObject;
                     itemOriginPos = currItem.transform.position;
                     itemOriginRot = currItem.transform.rotation;
@@ -75,6 +83,9 @@ public class ItemPickupScript : MonoBehaviour
         else
             Debug.DrawRay(cam.position, cam.forward * rayLength, Color.red);
 
+       
+
+        
         //HIGHLIGHTOBJ
        // if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out theObject))
        // {
@@ -83,18 +94,16 @@ public class ItemPickupScript : MonoBehaviour
        // }
 
 
-
-
-
         //  Put item back down
        
         if(Input.GetKeyDown(interactKey) && itemPickedup && canInteract)
         {
             if (currItem.tag == "ItemInv")
             {
-                // add item to inventory, do script later
+               
 
                 ResetInteract();
+               // collectedText.SetActive(false);
                 itemPickedup = false;
                 Destroy(currItem.gameObject);
                 currItem = null;
@@ -165,6 +174,12 @@ public class ItemPickupScript : MonoBehaviour
             zoomLerp -= smoothZoom;
         }
 
+    }
+
+    IEnumerator WaitForSec()
+    {
+        yield return new WaitForSeconds(3);
+        collectedText.SetActive(false);
     }
 
     void ResetItemInfo()

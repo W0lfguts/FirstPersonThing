@@ -14,8 +14,8 @@ public class PlayOnceOnEnter : MonoBehaviour {
 
 	void OnTriggerEnter(Collider coll)
 	{	       
-		Debug.Log("Player Object Entered Target Area"); 
-		audio.PlayOneShot(enterSound, 0.7f);
+		Debug.Log("Player Object Entered Target Area");
+        audio.PlayOneShot(enterSound);
 	}
 
 	void OnTriggerExit(Collider coll)
