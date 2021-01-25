@@ -20,13 +20,13 @@ public class MonoTrigger : MonoBehaviour
         {
             uiObject.SetActive(true);
             StartCoroutine("WaitForSec");
-            //Debug.Log("Hello");
+            Debug.Log("Hello");
         }    
     }
-
+    // time waited before destorying text
     IEnumerator WaitForSec()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(5);
         Destroy(uiObject);
         Destroy(gameObject);
     }

@@ -32,7 +32,7 @@ Material:
     - _AlphaCutoff: 0.5
     - _Cutoff: 0.5
     - _MakeBackSolid: 1
-    - _SelfIllumination: 0.41
+    - _SelfIllumination: 0.02
     - __dirty: 0
     m_Colors:
     - _BackColour: {r: 0.9433962, g: 0.84170437, b: 0.743147, a: 0}

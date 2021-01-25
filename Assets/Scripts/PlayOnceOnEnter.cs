@@ -14,13 +14,13 @@ public class PlayOnceOnEnter : MonoBehaviour {
 
 	void OnTriggerEnter(Collider coll)
 	{	       
-		Debug.Log("Player Object Entered Target Area");
+		//Debug.Log("Player Object Entered Target Area");
         audio.PlayOneShot(enterSound);
 	}
 
 	void OnTriggerExit(Collider coll)
 	{
-		Debug.Log("Player Object Exited Target Area");
+		//Debug.Log("Player Object Exited Target Area");
 	}
 
 }

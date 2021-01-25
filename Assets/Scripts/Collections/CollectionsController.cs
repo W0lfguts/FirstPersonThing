@@ -7,11 +7,6 @@ public class CollectionsController : MonoBehaviour
     public GameObject CollectionsMenuUI;
     public static bool CollectionsIsOpen = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
@@ -22,11 +17,13 @@ public class CollectionsController : MonoBehaviour
             {
                 CloseCollections();
                 Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
             }
             else
             {
                 OpenCollections();
                 Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
             }
         }
     }
