@@ -52,7 +52,7 @@ public class InventoryScript : MonoBehaviour
     {
         player.GetComponent<ItemPickupScript>().enabled = !showInv;
         player.GetComponent<PlayerMove>().enabled = !showInv;
-        player.transform.GetChild(0).GetComponent<PlayerLook>().enabled = !showInv;
+        player.transform.GetChild(0).GetChild(0).GetComponent<PlayerLook>().enabled = !showInv;
     }
 
     public void ShowBoard1()

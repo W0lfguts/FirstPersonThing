@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5457569039577708701
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 127613777058074081}
+  m_Layer: 0
+  m_Name: Headbobbing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &127613777058074081
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5457569039577708701}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.9000001, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6081725696325881281}
+  m_Father: {fileID: 6081725695229233635}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6081725694700736439
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,7 +92,7 @@ Transform:
   m_LocalPosition: {x: 8.65, y: 7.2215, z: -16.927}
   m_LocalScale: {x: 5.850561, y: 5.850561, z: 5.850561}
   m_Children:
-  - {fileID: 6081725696325881281}
+  - {fileID: 127613777058074081}
   - {fileID: 6081725694700736438}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -154,6 +185,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5b552b1169ffdc42aadb4046dbb0303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickupSound: {fileID: 0}
+  putdownSound: {fileID: 0}
   itemPickedup: 0
   rayLength: 9
   cam: {fileID: 6081725696325881281}
@@ -166,6 +199,8 @@ MonoBehaviour:
   currItem: {fileID: 0}
   itemOriginPos: {x: 0, y: 0, z: 0}
   itemOriginRot: {x: 0, y: 0, z: 0, w: 0}
+  collections: {fileID: 0}
+  collectedText: {fileID: 0}
   internalObject: 
 --- !u!1 &6081725696325881284
 GameObject:
@@ -195,12 +230,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6081725696325881284}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.9, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6081725696497299157}
-  m_Father: {fileID: 6081725695229233635}
+  m_Father: {fileID: 127613777058074081}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!81 &6081725696325881287
